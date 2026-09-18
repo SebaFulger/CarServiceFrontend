@@ -1,0 +1,10 @@
+
+<h2>Lista masinilor</h2>
+  <a [routerLink]="['/cars/new']">Adauga masina noua</a>
+
+<ul>
+  @for (car of cars(); track car.id) {
+    <li><a [routerLink]="['/cars',car.id]">{{ car.brand }} {{ car.model }} - {{ car.licensePlate }}</a></li>
+  }
+
+</ul>

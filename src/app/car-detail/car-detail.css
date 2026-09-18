@@ -1,0 +1,12 @@
+div, p, h2, h3, ul {
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+p {
+  margin: 4px 0;
+}
+
+a, button {
+  margin-right: 10px;
+}
