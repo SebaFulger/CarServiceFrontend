@@ -1,0 +1,12 @@
+<h2>Lista mechanicilor</h2>
+<a [routerLink]="['/mechanics/new']">Adauga mechanic nou</a>
+
+<ul>
+  @for (mechanic of mechanics(); track mechanic.id) {
+    <li>
+      <a [routerLink]="['/mechanics', mechanic.id, 'edit']">{{mechanic.name}} {{mechanic.username}}</a>
+      <a [routerLink]="['/mechanics', mechanic.id, 'edit']">edit</a>
+      <button (click)="deleteMechanic(mechanic.id)">Delete</button>
+    </li>
+  }
+</ul>

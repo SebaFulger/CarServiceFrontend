@@ -1,0 +1,28 @@
+<div>
+  @if (isEditMode) {
+    <h2>Actualizeaza inregistrare service</h2>
+  } @else {
+    <h2>Adauga inregistrare service</h2>
+  }
+
+  <input [(ngModel)]="description" placeholder="Descriere">
+  <input [(ngModel)]="serviceDate" type="date">
+  <input [(ngModel)]="km" type="number" placeholder="Kilometraj">
+  <input [(ngModel)]="cost" type="number" placeholder="Cost (RON)">
+
+  <select [(ngModel)]="carId">
+    <option value="">Selecteaza masina</option>
+    @for (car of cars(); track car.id) {
+      <option [value]="car.id">{{ car.brand }} {{ car.model }} - {{ car.licensePlate }}</option>
+    }
+  </select>
+
+  <select [(ngModel)]="mechanicId">
+    <option value="">Selecteaza mecanic</option>
+    @for (mechanic of mechanics(); track mechanic.id) {
+      <option [value]="mechanic.id">{{ mechanic.name }}</option>
+    }
+  </select>
+
+  <button (click)="saveServiceRecord()">Salveaza</button>
+</div>

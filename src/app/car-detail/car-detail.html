@@ -1,4 +1,3 @@
-
 @if (car()) {
     <h2>{{car().brand}} {{car().model}} </h2>
     <p>license plate: {{car().licensePlate}}</p>
@@ -6,6 +5,8 @@
     <p>Owner: {{car().owner}}</p>
     <a [routerLink]="['/cars',car().id,'edit']">UpdateMasina</a>
     <button (click)="deleteCar(car().id)">Delete Car</button>
+    <a [routerLink]="['/service-records/new']">Adauga service</a>
+    
 } @else {
     <p>Loading...></p>
 }
@@ -15,12 +16,13 @@
 @if (serviceRecords().length > 0) {
     <ul>
         @for ( record of serviceRecords();track record.id) {
-            <li>{{record.serviceDate}} - {{record.description}} - ({{record.km }} km, {{record.cost}} RON)</li>
+            <li>
+              {{record.serviceDate}} - {{record.description}} - ({{record.km }} km, {{record.cost}} RON)
+              <a [routerLink]="['/service-records', record.id, 'edit']">edit</a>
+              <button (click)="deleteServiceRecord(record.id)">Delete</button>
+            </li>
         }
     </ul>
 } @else {
     <p>No service records found.</p>
 }
-
-
-

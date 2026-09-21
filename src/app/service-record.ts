@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -15,5 +15,21 @@ export class ServiceRecord {
 
   getByCarId(carId: string) {
     return this.http.get(`${this.apiUrl}/by-car/${carId}`);
+  }
+
+  getServiceRecordById(id: string) {
+    return this.http.get(`${this.apiUrl}/${id}`);
+  }
+
+  createServiceRecord(serviceRecord: any) {
+    return this.http.post(this.apiUrl, serviceRecord);
+  }
+
+  updateServiceRecord(id: string, serviceRecord: any) {
+    return this.http.put(`${this.apiUrl}/${id}`, serviceRecord);
+  }
+
+  deleteServiceRecord(id: string) {
+    return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }

@@ -48,11 +48,26 @@ export class CarDetail implements OnInit {
     }
     this.carService.deleteCar(id).subscribe({
       next: () => {
-        console.log('Masina a fost stearsa cu succes.');
-        this.router.navigate(['/cars']); // Navigheaza inapoi la lista de masini dupa stergere
+        this.router.navigate(['/cars']);
       },
       error: (err) => {
         console.error('Eroare la stergerea masinii:', err);
+      },
+    });
+  }
+
+  deleteServiceRecord(recordId: string) {
+    if (!confirm('Are you sure you want to delete this service record?')) {
+      return;
+    }
+    this.serviceRecordService.deleteServiceRecord(recordId).subscribe({
+      next: () => {
+        this.serviceRecords.update((current) =>
+          current.filter((record) => record.id !== +recordId),
+        );
+      },
+      error: (err) => {
+        console.error('Eroare la stergerea inregistrarii:', err);
       },
     });
   }
